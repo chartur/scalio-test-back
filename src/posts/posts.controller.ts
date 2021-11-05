@@ -18,10 +18,7 @@ export class PostsController {
   }
 
   @Get(':id')
-  async getOne(@Param() params: FindOneParams, @Res() res: Response) {
-    await new Promise(resolve => {
-      setTimeout(resolve, 5000)
-    });
+  getOne(@Param() params: FindOneParams, @Res() res: Response) {
     try {
       const post = this.postsService.findOneByIdOrFail(+params.id);
       return res.status(HttpStatus.OK).json(post);
